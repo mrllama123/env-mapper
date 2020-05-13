@@ -20,7 +20,7 @@ async function setEnv(mappingRaw, mappingKey, isFile=true) {
     if (mappingKey in mapping) {
       for(const key of Object.keys(mapping[mappingKey])) {
         core.info('setting ' + key);
-        const envVar = mapping[key];
+        const envVar = mapping[mappingKey][key];
         core.exportVariable(key, envVar);
       }
     } else {
