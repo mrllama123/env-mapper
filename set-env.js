@@ -18,7 +18,9 @@ async function setEnv(mappingRaw, key, isFile=true) {
     }
 
     if (key in mapping) {
+      core.info('key found');
       for(const key of Object.keys(mapping)) {
+        core.info('setting ' + key);
         const envVar = mapping[key];
         core.exportVariable(key, envVar);
       }
