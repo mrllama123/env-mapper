@@ -1,13 +1,17 @@
-name: 'Wait'
-description: 'Wait a designated number of milliseconds'
+name: 'env mapper'
+description: 'set env variables that matches a key (like aws env names) to a corresponding set of named values'
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
+  envMapperFile:  
+    description: 'the yaml file that has the mappings'
     required: true
-    default: '1000'
-outputs:
-  time: # output will be available to future steps 
-    description: 'The message to output'
+    default: ''
+  envMapperString:
+    description: 'the yaml string that has the mappings'
+    required: true
+    default: ''
+  envMapperKey:
+    description: 'the key used to match a corresponding set of named values i.e an aws env name like test'
+    required: true
 runs:
   using: 'node12'
   main: 'dist/index.js'
