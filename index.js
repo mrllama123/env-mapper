@@ -12,7 +12,7 @@ async function run() {
     if (mappingFile === '' && mappingString === '') {
       throw new Error('need to specify either a mapping file or string');
     } else if (mappingString !== '') {
-      core.info('setting env vars now')
+      core.info('setting env vars now for string')
       await setEnv(mappingString, mapperKey, false);
     } else {
       core.info('setting env vars now')
