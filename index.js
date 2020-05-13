@@ -1,18 +1,23 @@
 const core = require('@actions/core');
-const wait = require('./wait');
+const {setEnv} = require('./set-env');
 
-
-// most @actions toolkit packages have async methods
+/**
+ * main runner function for github action
+ */
 async function run() {
   try { 
-    const ms = core.getInput('milliseconds');
-    console.log(`Waiting ${ms} milliseconds ...`)
-
-    core.debug((new Date()).toTimeString())
-    await wait(parseInt(ms));
-    core.debug((new Date()).toTimeString())
-
-    core.setOutput('time', new Date().toTimeString());
+    const mappingFile = core.getInput('envMapperFile');
+    const mappingString = core.getInput('envMapperString');
+    const mapperKey = core.getInput('envMapperKey');
+    if (mappingFile === '' && mappingString === '') {
+      throw new Error('need to specify either a mapping file or string');
+    } else if (mappingString !== '') {
+      core.info('setting env vars now')
+      await setEnv(mappingString, mapperKey, false);
+    } else {
+      core.info('setting env vars now')
+      await setEnv(mappingFile, mapperKey);
+    }
   } 
   catch (error) {
     core.setFailed(error.message);
