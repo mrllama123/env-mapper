@@ -30,3 +30,6 @@ jobs:
           prod:
             SOME_ENV: some value
         envMapperKey: test
+    - name: test env
+      run: |
+        echo $SOME_ENV
