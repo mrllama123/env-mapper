@@ -16,6 +16,11 @@ test('key not in mapping', async() => {
     await expect(setEnv(mappingString, 'some_key', false)).rejects.toThrow('key not in mapping object');
 });
 
+
+test('key in mapping', async() => {
+  await expect(setEnv(mappingString, 'test', false)).resolves.not.toThrow();
+});
+
 // test('wait 500 ms', async() => {
 //     const start = new Date();
 //     await wait(500);
