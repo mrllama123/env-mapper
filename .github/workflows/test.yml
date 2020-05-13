@@ -22,4 +22,11 @@ jobs:
     - uses: actions/checkout@v1
     - uses: ./
       with:
-        milliseconds: 1000
+        envMapperString: | 
+          test:
+            SOME_ENV: some value
+          uat:
+            SOME_ENV: some value
+          prod:
+            SOME_ENV: some value
+        envMapperKey: test
