@@ -122,7 +122,7 @@ const core = __webpack_require__(470);
  * @param {string} key 
  * @param {boolean} isFile 
  */
-async function setEnv(mappingRaw, key, isFile=true) {
+async function setEnv(mappingRaw, mappingKey, isFile=true) {
   try {
     let mapping = undefined
     if (isFile) {
@@ -132,9 +132,8 @@ async function setEnv(mappingRaw, key, isFile=true) {
       mapping = yaml.parse(mappingRaw);
     }
 
-    if (key in mapping) {
-      core.info('key found');
-      for(const key of Object.keys(mapping)) {
+    if (mappingKey in mapping) {
+      for(const key of Object.keys(mapping[mappingKey])) {
         core.info('setting ' + key);
         const envVar = mapping[key];
         core.exportVariable(key, envVar);
