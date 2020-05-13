@@ -9,13 +9,14 @@ async function run() {
     const mappingFile = core.getInput('envMapperFile');
     const mappingString = core.getInput('envMapperString');
     const mapperKey = core.getInput('envMapperKey');
+    core.info(mappingString)
     if (mappingFile === '' && mappingString === '') {
       throw new Error('need to specify either a mapping file or string');
     } else if (mappingString !== '') {
       core.info('setting env vars now for string')
       await setEnv(mappingString, mapperKey, false);
     } else {
-      core.info('setting env vars now')
+      core.info('setting env vars now for file')
       await setEnv(mappingFile, mapperKey);
     }
   } 
