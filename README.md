@@ -17,11 +17,12 @@ github action:
 uses: mrllama123/env-mapper@v1
 with:
   envMapperFile: ./path to file
-  envMapperKey: some key to map 
+  envMapperKey: key
 ```
 file:
 ```yaml
-SOME_ENV: value
+key:
+  SOME_ENV: value
 ...
 ```
 
@@ -31,8 +32,9 @@ SOME_ENV: value
 uses: mrllama123/env-mapper@v1
 with:
   envMapperString: |
-    SOME_ENV: value
-  envMapperKey: some key to map 
+    key:
+      SOME_ENV: value
+  envMapperKey: key
 ```
 
 ## local dev setup
