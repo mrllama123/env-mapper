@@ -1,5 +1,8 @@
 name: 'env mapper'
 description: 'set env variables that matches a key (like aws env names) to a corresponding set of named values'
+branding:
+  icon: paperclip
+  color: red
 inputs:
   envMapperFile:  
     description: 'the yaml file that has the mappings'
